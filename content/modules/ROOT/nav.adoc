@@ -1,7 +1,13 @@
-* xref:module-01.adoc[1. RPM Native Container]
-** xref:module-01.adoc#repositories[Repositories]
-** xref:module-01.adoc#software[Software]
+* xref:module-01.adoc[1. Podman AI Lab]
+** xref:module-01.adoc#overview[Overview]
+** xref:module-01.adoc#serve-model[Serve Model]
 
-* xref:module-02.adoc[2. GitHub Sourced Container]
-** xref:module-02.adoc#prerequisites[Install Prerequisites]
-** xref:module-02.adoc#container[Enable Container]
+* xref:module-02.adoc[2. JupyterLab & Docling]
+
+* xref:module-03.adoc[3. Elyra Pipeline]
+
+* xref:module-04.adoc[4. Upload Pipeline to OpenShift AI]
+
+* xref:module-05.adoc[5. Trigger Pipeline Run in OpenShift AI]
+
+* xref:module-06.adoc[6. Wrap-Up & Next Steps]

@@ -1,12 +1,12 @@
 name: modules
-title: Default Title
+title: LB1942
 version: master
 nav:
   - modules/ROOT/nav.adoc
 
 asciidoc:
   attributes:
-    lab_name: "I'm the lab_name var"
+    lab_name: "Autogenerate knowledge files from multiple data formats with InstructLab, Docling, and Elyra"
     release-version: master
     page-pagination: true
     my_var: "foo"
