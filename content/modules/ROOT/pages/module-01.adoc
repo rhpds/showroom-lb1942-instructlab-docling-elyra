@@ -1,6 +1,74 @@
 = Serving a Model with Podman AI Lab
 
-== Downloading the UBI
+==  Start Podman AI Lab
+
+. Open the LB1942: Podman Desktop AI noVNC Web URL and click the *Send Credentials* with the password provided.
+
++ 
+image::local/noVNC-login-page.png[noVNC login prompt,100%,100%]
+
+
+. Once you are logged in click on *Activities* in the top left corner of the desktop.
+
++
+image::local/rhel9-activities.png[RHEL 9 Activities,100%,100%]
+
+. Click on the *Show Applications* icon.
+
++
+image::local/rhel9-show-apps.png[RHEL 9 Show Applications,100%,100%]
+
+. Click the *Podman Desktop* icon.
+
++
+image::local/rhel9-podman-desktop.png[HEL 9 Podman Desktop,100%,100%]
+
+. Click the *AI Lab* icon on the left menu, then click *Catalog* under MODELS, *Downloaded* under Models, and finally click on the *Create Model Service* icon.
+
++
+image::local/rhel9-podman-ai-1.png[Podman AI downloaded models,100%,100%]
+
++
+NOTE: You can hide the enable GPU support banner by clicking on *Don't display anymore*
+
+. Click the *Create Service* button. 
+
++
+image::local/rhel9-podman-ai-2.png[Podman AI create service,100%,100%]
+
+. Click the *Open service details* button. 
+
++
+image::local/rhel9-podman-ai-3.png[Podman AI service details,100%,100%]
+
+. You now have a quantized LLM deployed to your local VM! Note the inference endpoint URL.
+
+We'll use that in our notebook when we generate markdown and qna.yaml files. 
+
++
+image::local/rhel9-podman-ai-4.png[Inference service details,100%,100%]
+
+== Extra Section
+
+. Click on the *Playgrounds* on the left menu and then click *New Playground*.
+
++
+image::local/rhel9-podman-ai-5.png[Podman AI Lab Playground,100%,100%]
+
+. Click on the *Create Playground* button. You can leave the Playground name blank.
+
++
+image::local/rhel9-podman-ai-6.png[Podman AI Lab New Playground,100%,100%]
+
+. Click on the *playground 1* name.
+
++
+image::local/rhel9-podman-ai-7.png[Podman AI Lab New Playground,100%,100%]
+
+. This screen allows you to interact with the LLM deployed on Podman desktop. Type in some prompts to test it out!
+
++
+image::local/rhel9-podman-ai-8.png[Podman AI Playground UI,100%,100%]
 
 In this lab, you will be installing software into the container 
 image running as an interactive application. To do this you will

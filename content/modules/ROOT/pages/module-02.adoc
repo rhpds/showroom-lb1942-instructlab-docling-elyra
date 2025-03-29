@@ -1,16 +1,40 @@
-= Managing an Application from GitHub
+= JupyterLab and Docling
 
-In the first half of this workshop, we packaged an application into this portable container format manually using rpms.
-In the second half, we will consider that you may want to manage software from GitHub or some kind of software versioning application.
-Rather than installing rpms, we have individual software files and pull them out of that version control into a group of systems.
+We'll start JupyterLab on a VM outside of a Kubernetes cluster. This is the local development scenario.  
 
-== Install RHEL 8 UBI
+== Start JupyterLab
 
-In this lab, we will be using a different Red Hat Enterprise Linux version in my container. 
+JupyterLab has already been installed on your VM. You just need to run the following commands to start it.
 
-. Verify the host system release 
+. Start JupyterLab
 
 +
+[source,bash]
+----
+TODO - start jupyterlab command
+----
+
+. After running the command JupyterLab should startup in Firefox.
+
++
+TODO - add image of empty JupyterLab in Firefox
+
+. Click on the Git icon on the left menu and click *Clone a repository*.
+
++ 
+image::local/jupyter-git-clone.png[Button to clone a Git repository,100%,100%]
+
+. Clone the https://github.com/jhurlocker/elyra_docling_rh_summit.git repo.
+
++
+image::local/git-clone1.png[Button to clone a Git repository,100%,100%]
+
++ Clone the https://github.com/noelo/instruct-generate repo as well.
+
++ 
+
+image::local/git-clone2.png[Button to clone a Git repository,100%,100%]
+
 [source,bash]
 ----
 cat /etc/redhat-release
