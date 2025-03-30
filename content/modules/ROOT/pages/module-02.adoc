@@ -1,6 +1,6 @@
-= JupyterLab and Docling
+= JupyterLab
 
-We'll start JupyterLab on a VM outside of a Kubernetes cluster. This is the local development scenario.  
+We'll start JupyterLab on a VM outside of a Kubernetes cluster.   
 
 == Start JupyterLab
 
@@ -9,15 +9,25 @@ JupyterLab has already been installed on your VM. You just need to run the follo
 . Start JupyterLab
 
 +
+image::local/rhel9-terminal.png[Open terminal,100%,100%]
+
++
 [source,bash]
 ----
-TODO - start jupyterlab command
+source /home/developer/venv/elyra/bin/activate
+jupyter lab
 ----
+
++ 
+image::local/rhel9-terminal-jupyter.png[Command to open jupyter from terminal,100%,100%]
+
++
+NOTE: You can copy commands to the clipboard icon to the left menu as shown in the screenshot above. You can also move the left menu handler by dragging it up or down. After pasting command the command to the clipboard you can paste into a terminal by right clicking and selecting Paste. When you are in the web browser you can paste by using Ctrl-v.
 
 . After running the command JupyterLab should startup in Firefox.
 
 +
-TODO - add image of empty JupyterLab in Firefox
+image::local/jupyterlab.png[Blank JupyterLab,100%,100%]
 
 . Click on the Git icon on the left menu and click *Clone a repository*.
 
@@ -27,13 +37,79 @@ image::local/jupyter-git-clone.png[Button to clone a Git repository,100%,100%]
 . Clone the https://github.com/jhurlocker/elyra_docling_rh_summit.git repo.
 
 +
-image::local/git-clone1.png[Button to clone a Git repository,100%,100%]
+image::local/git-clone1.png[Box to clone a Git repository,100%,100%]
 
-+ Clone the https://github.com/noelo/instruct-generate repo as well.
++
+Clone the https://github.com/noelo/instruct-generate repo as well.
 
 + 
+image::local/git-clone2.png[Box to clone a Git repository,100%,100%]
 
-image::local/git-clone2.png[Button to clone a Git repository,100%,100%]
++
+You should now see the *elyra_docling_rh_summit* and *instruct_generate* directories in the file browser.
+
++ 
+image::local/repos-in-jupyterlab.png[Repos in JupyterLab,100%,100%]
+
+== Elyra Pipeline
+
+. Open the *docling_elyra_summit.pipeline* file under */elyra_docling_rh_summit/local_development*.
+
++
+First we'll ingest 3 files from the files directory. Then we'll converter those files into markdown files using docling. Once the markdown files are combined we'll need to manually review them to make sure the content is of high quality. Once the file is ready we'll rename it to move the pipeline to the QNA Generator node to generate the qna.yaml file. Finally we'll need to review the contents of the qna.yaml file to ensure it is ready for InstructLab.
+
++ 
+image::local/docling-elyra-pipeline.png[Elyra pipeline,100%,100%]
+
+. Click on the *Ingest Files* node of the Elyra pipeline. Select the *Open Panel* in the top right hand corner.
+
++
+After opening the panel take a look at the node properties that are available. Elyra provides a lot of flexibility and configuration of nodes within a pipeline. Every node requires 2 properties, Filename and Runtime Image. 
+
++ 
+The Filename property contains a reference to the *copy_files.py* we have under */elyra_docling_rh_summit/local_development*.
+
++ 
+The Runtime Image we are using for local development is the Anaconda with Pyrhon image. Elyra allows you to run different images for any of your nodes. For instance, some nodes in your pipeline may require a GPU while others can run with a CPU. This helps to save valuable compute resources.
+
++ 
+image::local/ingest-files-node.png[Ingest Files node,100%,100%]
+
+. Hovering the mouse pointer over a node shows some of the node properties. Double click on the *PDF Converter* node to open the *injest-local.ipynb* notebook. 
+
++
+image::local/open-code-from-node.png[Ingest Files node,100%,100%]
+
++
+image::local/injest-local-notebook.png[Ingest Files node,100%,100%]
+
+== Docling
+
+. TODO - WE NEED TO HAVE THEM REVIEW IMPORTANT CELLS OF NOTEBOOK AND ENTER IN THE PODMAN AI LAB INFERENCE URL.
+
+== HITL Markdown
+
+. Click on the *HITL Markdown* node.
+
++
+image::local/HITL-markdown-node.png[HITL markdown node,100%,100%]
+
+== QNA Generator
+
+. Click on the *QNA Generator* node.
+
++
+image::local/qna-generator.png[QNA Generator node,100%,100%]
+
+== HITL QNA
+
+. Click on the *HITL QNA* node.
+
++
+image::local/HITL-qna-node.png[HITL QNA node,100%,100%]
+
+
+
 
 [source,bash]
 ----
