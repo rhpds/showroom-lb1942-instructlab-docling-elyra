@@ -1,138 +1,96 @@
-= Managing an Application from GitHub
+= OpenShift AI Solution
 
-In the first half of this workshop, we packaged an application into this portable container format manually using rpms.
-In the second half, we will consider that you may want to manage software from GitHub or some kind of software versioning application.
-Rather than installing rpms, we have individual software files and pull them out of that version control into a group of systems.
+TODO - Give an overview of RHOAI and the solution on RHOAI/OpenShift
+TODO - Add architecture diagram
 
-== Install RHEL 8 UBI
+== Granite Model Deployed to RHOAI
 
-In this lab, we will be using a different Red Hat Enterprise Linux version in my container. 
+First, we'll start out by taking a look at where our Granite model is deployed on OpenShift AI. 
 
-. Verify the host system release 
+. Click on the OpenShift AI route provided for you. Click on the *Log in with OpenShift* button.
 
 +
-[source,bash]
-----
-cat /etc/redhat-release
-----
+image::openshift/openshift-login-page.png[OpenShift Login,100%,100%]
+
+. Click on the *rhsso* button.
+
++
+image::openshift/openshift-rhsso-page.png[Login with rhsso,100%,100%]
+
+. Enter your *username* and *password* for the lab and click on *Sign In*.
+
++
+image::openshift/openshift-userpass-page.png[Login with username and password,100%,100%]
+
++
+You should now see the OpenShift AI dashboard. Click on the *summit_project* under Data Science Projects in the dashboard.
+
++
+image::openshift/rhoai-dashboard.png[RHOAI Dashboard,100%,100%]
+
+TODO - Put in screenshots of Granite deployed on RHOAI
+
+== Open the Workbench
+
+. Click on *Workbench*. We have one Jupyter notebook running named _elyra-docling-workbench_. 
+
++
+NOTE: You can have multiple notebooks based on a variety of images per workbench. OpenShift AI provides Jupyter, VS Code, 
+
++
+image::openshift/rhoai-workbench.png[RHOAI Dashboard,100%,100%]
+
+. Click on the *rhsso* button.
+
++
+image::openshift/openshift-rhsso-page.png[Login with rhsso,100%,100%]
+
+. Enter your *username* and *password* for the lab and click on *Sign In*.
+
++
+image::openshift/openshift-userpass-page.png[Login with username and password,100%,100%]
+
+. Your workbench with JupyterLab should now be open. 
+
++
+image::openshift/rhoai-jupyter.png[JupyterLab workbench,100%,100%]
+
+. Click on the Git icon on the left menu and click *Clone a repository*.
+
 + 
-NOTE: The `bastion` system is Red Hat Enterprise Linux 9, and when you built the previous container, you used the UBI9 image. This means both the image and the container were built off the same Red Hat Enterprise Linux packages. 
+image::local/jupyter-git-clone.png[Button to clone a Git repository,100%,100%]
 
-. As we did previously in this lab, Use `buildah from` to pull down the Red Hat Enterprise Linux 8 UBI.
-
-+
-[source,bash]
-----
-buildah from registry.access.redhat.com/ubi8/ubi
-----
-
-NOTE: Because you already pulled one image named `ubi-working-container` this one is called `ubi-working-container-1`. 
-
-[#prerequisites]
-== Install Prerequisites
-
-Now that you have a working container, you will use the same process as before installing all the prerequisites, changing config files, and manipulating the contents of this container to be in the desired state.
-
-The software you will install is a JavaScript-based game that runs on a web browser. As before in the lab, use dnf to install software inside the container. 
-
-. Use `buildah run` and install Apache (`httpd`) into the `ubi-working-container-1` container. 
-+
-[source,bash]
-----
-buildah run ubi-working-container-1 -- dnf -y install httpd
-----
-
-== Enable Service
-
-The next thing to do is to use a systemctl to enable the service. The ubi-init provides full systemd service to the container.
-This will start up any of the services that are enabled. 
-
-. Enable the `httpd` service using `buildah run`
+. Clone the https://github.com/jhurlocker/elyra_docling_rh_summit.git repo.
 
 +
-[source,bash]
-----
-buildah run ubi-working-container-1 -- systemctl enable httpd
-----
-
-NOTE: The UBI standard image doesn't have systemd installed on it by default. The `ubi-init` container image does include systemd. Plan accordingly to which image you use to build applications.  
-
-== Explore Source Materials
-
-A GitHub repository has already been synchronized to `/home/devops/clumsy-bird/` This repository contains the configurations for your application.
-
-. Verify the repository is cloned inside the `/home/devops/` directory
-+
-[source,bash]
-----
-cd /home/devops/
-----
+image::local/git-clone1.png[Box to clone a Git repository,100%,100%]
 
 +
-[source,bash]
-----
-git clone https://github.com/ellisonleao/clumsy-bird
-----
-+
-NOTE: The output states that the software has already been checked out. 
-+
-. Explore the JavaScript contents, index files, and everything else that we need for this web-based JavaScript software.
-+
-[source,bash,role=execute]
-----
-ls clumsy-bird
-----
+Clone the https://github.com/noelo/instruct-generate repo as well.
 
-== Add Source Materials to Container
-
-. Now that you have verified the source materials exist, you will put the software inside of my container image using the `buildah copy` command.
-+
-[source,bash]
-----
-buildah copy ubi-working-container-1 clumsy-bird /var/www/html
-----
-
-[#container]
-== Enable Container in Background
-
-In the previous section of this lab, you ran the game natively through interactive mode. Because you are now building a web application you will need to run the container in the background and access it through a web address. 
-
-. Execute `buildah config` to specify a port and initialize the container. 
++ 
+image::local/git-clone2.png[Box to clone a Git repository,100%,100%]
 
 +
-[source,bash]
-----
-buildah config --port 80 --cmd "/usr/sbin/init" ubi-working-container-1
-----
+You should now see the *elyra_docling_rh_summit* and *instruct_generate* directories in the file browser.
 
-NOTE: The command makes a configuration change to this container. I'm configuring this container to accept connections to its port 80. When the container starts up, it should run the init command, which, in this case, is going to be the Apache daemon right from earlier when I enabled it.
+. We'll now take a look at the data science pipeline. This pipeline looks the same as our local pipeline, but some of the node implementations are a little different. 
 
-== Commit Container and Deploy
-
-. Now that we have a container in a working configured state, it is time to make that permanent by committing it to a container image called `clumsy-bird`
 +
-[source,bash]
-----
-buildah commit ubi-working-container-1 clumsy-bird
-----
+Open the *elyra_docling_rh_summit/openshift_solution* directory and open the *docling_elyra_summit.pipeline*. Click on the *Ingest Files* node and then click on the *Open Panel* icon to view the node properties.
 
-. Verify that the image was created with `podman`
++ 
+image::openshift/rhoai-pipeline.png[Data Science Pipeline,100%,100%]
+
+. Note that this node is using a different runtime image. The local pipeline used an Anaconda image. Also, instead of loading the files from a directory, this version of the node loads the files from an s3 bucket.
+
 +
-[source,bash]
-----
-podman images
-----
+image::openshift/ingest-node-properties.png[Ingest node properties,100%,100%]
+
+. Click on the *open runtimes* icon. This OpenShift AI workbench image has the Data Science Pipelines runtimes pre-configured. Note the Data Science Pipelines API Endpoint points to your OpenShift AI instance.
+
 +
-. Run the container Now it's time to run the container. 
+OpenShift AI Data Science Pipelines has a dependency on s3 object storage. We'll go over the s3 object store in upcoming sections.
+
 +
-[source,bash]
-----
-podman run -d -p 8500:80 clumsy-bird
-----
-
-== Verify Application
-
-Verify that the application is running by navigating to
-
-http://bastion.{guid}.example.opentlc.com:8500
-
+image::openshift/dsp-runtimes.png[Data Science Pipelines,100%,100%]

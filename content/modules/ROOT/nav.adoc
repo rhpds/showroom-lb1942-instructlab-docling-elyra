@@ -4,9 +4,9 @@
 
 * xref:module-02.adoc[2. JupyterLab & Docling]
 
-* xref:module-03.adoc[3. Elyra Pipeline]
+* xref:module-03.adoc[3. OpenShift AI Solution]
 
-* xref:module-04.adoc[4. Upload Pipeline to OpenShift AI]
+* xref:module-04.adoc[4. OpenShift and Mino]
 
 * xref:module-05.adoc[5. Trigger Pipeline Run in OpenShift AI]
 

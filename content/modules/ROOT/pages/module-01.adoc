@@ -1,5 +1,17 @@
 = Serving a Model with Podman AI Lab
 
+[#overview]
+== Podman AI Lab Overview
+
+
+Podman AI Lab in an extension to Podman Desktop and provides an easy way to work with Large Language Models (LLMs) on your local workstation.
+
+* *Model Catalog & Comparison*: Access a catalog of recipes and a curated list of open-source models for experimentation and comparison.
+* *Local Container Integration*: Seamlessly integrate LLMs into your local container workflow, exposing inference APIs.
+* *Direct Application Access*: Enable direct access to LLMs from your application containers.
+* *Inference Optimization*: Utilize playgrounds to fine-tune inference parameters.
+* *Ready-Made Examples*: Leverage recipes for practical, ready-made examples.
+
 ==  Start Podman AI Lab
 
 . Open the LB1942: Podman Desktop AI noVNC Web URL and click the *Send Credentials* with the password provided.
@@ -43,7 +55,8 @@ image::local/rhel9-podman-ai-3.png[Podman AI service details,100%,100%]
 
 . You now have a quantized LLM deployed to your local VM! Note the inference endpoint URL.
 
-We'll use that in our notebook when we generate markdown and qna.yaml files. 
++
+We'll use that in our Jupyter notebook when we generate InstructLab markdown and qna.yaml files. 
 
 +
 image::local/rhel9-podman-ai-4.png[Inference service details,100%,100%]
@@ -87,9 +100,7 @@ image from Red Hat's registry.
 buildah from registry.access.redhat.com/ubi9/ubi
 ----
 
-[#overview]
-== Podman AI Lab Overview
-TODO - Add overview of Podman AI Lab. Keep it short.
+
 
 +
 [source,bash]
