@@ -10,17 +10,17 @@ First, we'll start out by taking a look at where our Granite model is deployed o
 . Click on the OpenShift AI route provided for you. Click on the *Log in with OpenShift* button.
 
 +
-image::openshift/openshift-login-page.png[OpenShift Login,100%,100%]
+image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
 
 . Click on the *rhsso* button.
 
 +
-image::openshift/openshift-rhsso-page.png[Login with rhsso,100%,100%]
+image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
 . Enter your *username* and *password* for the lab and click on *Sign In*.
 
 +
-image::openshift/openshift-userpass-page.png[Login with username and password,100%,100%]
+image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
 
 +
 You should now see the OpenShift AI dashboard. Click on the *summit_project* under Data Science Projects in the dashboard.
@@ -43,12 +43,12 @@ image::openshift/rhoai-workbench.png[RHOAI Dashboard,100%,100%]
 . Click on the *rhsso* button.
 
 +
-image::openshift/openshift-rhsso-page.png[Login with rhsso,100%,100%]
+image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
 . Enter your *username* and *password* for the lab and click on *Sign In*.
 
 +
-image::openshift/openshift-userpass-page.png[Login with username and password,100%,100%]
+image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
 
 . Your workbench with JupyterLab should now be open. 
 
@@ -58,7 +58,7 @@ image::openshift/rhoai-jupyter.png[JupyterLab workbench,100%,100%]
 . Click on the Git icon on the left menu and click *Clone a repository*.
 
 + 
-image::local/jupyter-git-clone.png[Button to clone a Git repository,100%,100%]
+image::openshift/jupyter-git-clone.png[Button to clone a Git repository,100%,100%]
 
 . Clone the https://github.com/jhurlocker/elyra_docling_rh_summit.git repo.
 
@@ -74,7 +74,7 @@ image::local/git-clone2.png[Box to clone a Git repository,100%,100%]
 +
 You should now see the *elyra_docling_rh_summit* and *instruct_generate* directories in the file browser.
 
-. We'll now take a look at the data science pipeline. This pipeline looks the same as our local pipeline, but some of the node implementations are a little different. 
+. We'll start by taking a look at our data science pipeline. 
 
 +
 Open the *elyra_docling_rh_summit/openshift_solution* directory and open the *docling_elyra_summit.pipeline*. Click on the *Ingest Files* node and then click on the *Open Panel* icon to view the node properties.
