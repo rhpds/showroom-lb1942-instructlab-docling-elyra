@@ -1,6 +1,6 @@
-= OpenShift AI and Minio
+= OpenShift Pipelines and Minio
 
-== Event Listeners
+== Event Listeners[[ocppipelines]]
 
 . Login to your OpenShift console.
 
@@ -37,7 +37,7 @@ image::openshift/ocp-trigger-template.png[OpenShift trigger template,100%,100%]
 +
 image::openshift/ocp-pipeline.png[OpenShift pipeline,100%,100%]
 
-== Minio
+== Minio[[minio]]
 
 We're using Mino for our s3 buckets.
 
@@ -51,82 +51,40 @@ image::openshift/minio-route.png[Mino route,100%,100%]
 +
 image::openshift/minio-login.png[Mino login page,80%,80%]
 
-. Click *Object Browser* on the left menu and open *upload-bucket*. This s3 bucket has been configured with a Minio event to send a notification to our OpenShift event listener (*simple-pipeline-listener*) that we saw earlier. 
+. We'll create an event destination so that our event listener can trigger our OpenShift pipeline whenever we upload files to the s3 bucket.
 
 +
-image::openshift/minio-upload-bucket.png[Mino upload bucket,100%,100%]
-
-== Let's Run the Data Science Pipeline!
-
-To run the data science pipeline on OpenShift AI all we need to do is upload a file to our *upload-bucket* in Minio. That will notify our event listener a new file has been uploaded to the bucket and the event listener along with the trigger template will start our OpenShift AI Data Science Pipeline.
-
-NOTE: To interact with Minio we'll need to use a python script (we can't download/upload files on the lab laptops).  
-
-. Go back to your OpenShift AI workbench and open the *elyra_docling_rh_summit/openshift_solution/minio_utilities* directory. 
-+
-Open the *upload-file-to-s3.py* file and click the *Run* icon at the top. This python script will upload a PDF to our Minio s3 bucket (upload-bucket). 
+Click on *Events* on the left menu and click on the *Add event destination* button.
 
 +
-image::openshift/minio-utils-upload.png[Python s3 bucket upload,100%,100%]
+image::openshift/minio-add-event-destination.png[Mino add event destination,100%,100%]
 
-. Our event listener should have received the notification from the Minio event that a new file was uploaded and should have triggered a new pipeline run. 
-
-+
-Go back to you OpenShift web console and select the *Pipelines* from the left hand menu. Click on *PipelineRuns*. 
+. Scroll down until you see the webhook function. Click on *Webhook*. 
 
 +
-You should see a successful pipeline run.
+image::openshift/minio-webhook-event.png[Mino webhook event,100%,100%]
+
+. We'll need to get our OpenShift token before we can completely configure the event destination in Minio. 
 
 +
-image::openshift/ocp-pipeline-run-success.png[OCP Pipeline run,100%,100%]
+image::openshift/ocp-token.png[OpenShift token,100%,100%]
 
-. Let's take a look at our OpenShift AI pipeline run. Open your OpenShift AI dashboard and click *Experiments* -> *Experiments and Runs* from the left menu. 
-
-+
-Select the *Default* experiment. You should see that a pipeline has started, but hasn't finished yet. That's because it's waiting at our HITL markdown review task.
-
-TODO - get screenshot of DSP pipeline to review status after it's initially started.
-
-. Let's review the markdown file so we can move the pipeline along.
+. Enter in _dsp-event-listener_ for the *Identifier*, the event listener route URL for the *Endpoint*, and your OpenShift token in the *Auth Token* field.
 
 +
-. Go back to your OpenShift AI workbench and open the *elyra_docling_rh_summit/openshift_solution/minio_utilities* directory. 
-+
-Open the *HITL-review-markdown.py* file and click the *Run* icon at the top. This python script will download a PDF named _docling-markdown-review.md_ to the local directory.
+Click *Save Event Destination* 
 
 +
-image::openshift/minio-utils-hitl-markdown-review.png[HITL markdown review,100%,100%]
+image::openshift/minio-event-destination.png[Mino configure event destination,100%,100%]
 
-. Open the _docling-markdown-review.md_ file. TODO: WHAT DO WE WANT THEM TO DO HERE? 
-
-+
-When you're done reviewing the markdown file close it and rename the file _docling-markdown-approved.md_ run the *HITL_upload_markdown.py*. This will upload our reviewed markdown file to an s3 bucket and our QNA Generator node will pull download it to generate the qna.yaml file.
-
-NOTE: You can right-click on the file and select Rename to update the file name.
-+
-image::openshift/minio-utils-hitl-markdown-approved.png[HITL markdown approved,100%,100%]
-
-. TODO: THEY SHOULD GO BACK TO THE RHOA PIPELINE TO SEE THAT IT MOVED TO THE QNA REVIEW NODE.
-
-. Our final step is to review the generated qna.yaml file. 
+. Under Administration on the left hand menu click *Buckets*. Open the *upload-files* bucket and click *Events* for the upload-files bucket. Click on *Subscribe to Event*.
 
 +
-. Go back to your OpenShift AI workbench and open the *elyra_docling_rh_summit/openshift_solution/minio_utilities* directory. 
-+
-Open the *HITL-review-qna.py* file and click the *Run* icon at the top. This python script will download a PDF named _qna-review_me.yaml_ to the local directory.
+image::openshift/minio-subscribe-to-events.png[Mino subscribe to events,100%,100%]
+
+. Select the *dsp-event-listener* webhook from the dropdown. Select the *PUT - Object Uploaded* event and click *Save*.
 
 +
-image::openshift/minio-utils-hitl-qna-review.png[HITL qna review,100%,100%]
+image::openshift/minio-subscribe-to-bucket-events.png[Mino subscribe to events,100%,100%]
 
-. Open the _qna-review-me.yaml_ file. TODO: WHAT DO WE WANT THEM TO DO HERE? 
-
-+
-When you're done reviewing the markdown file close it and rename the file _qna.yaml_ and run the *HITL_upload_qna.py*. This will upload our reviewed qna.yaml file to data-files-bucket in Minio.
-
-+
-Your pipeline should be completed now!
-
-+
-image::openshift/minio-utils-hitl-qna-approved.png[HITL QNA approved,100%,100%]
-
-. TODO: THEY SHOULD CHECK THE COMPLETED PIPELINE TO MAKE SURE IT RAN SUCCESSFULLY
+Your s3 bucket is now configured to send an event to your OpenShift event listener every time a file is uploaded. In the next section we'll upload a file and see how it runs our pipelines!

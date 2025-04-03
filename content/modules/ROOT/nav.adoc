@@ -1,13 +1,20 @@
-* xref:module-01.adoc[1. Podman AI Lab]
-** xref:module-01.adoc#overview[Overview]
-** xref:module-01.adoc#serve-model[Serve Model]
 
-* xref:module-02.adoc[2. JupyterLab & Docling]
 
-* xref:module-03.adoc[3. OpenShift AI Solution]
+* xref:module-03.adoc[1. OpenShift AI]
+** xref:module-03.adoc#elyra[Elyra]
+** xref:module-03.adoc#docling[Docling]
 
-* xref:module-04.adoc[4. OpenShift and Mino]
+* xref:module-04.adoc[2. OpenShift Pipelines]
+** xref:module-04.adoc#ocppipelines[OpenShift Pipelines]
+** xref:module-04.adoc#minio[Minio]
 
-* xref:module-05.adoc[5. Trigger Pipeline Run in OpenShift AI]
+* xref:module-05.adoc[3. Trigger Pipeline Run in OpenShift AI]
+** xref:module-05.adoc#dsprun[Running the Data Science Pipeline]
+* xref:module-06.adoc[4. Wrap-Up & Next Steps]
 
-* xref:module-06.adoc[6. Wrap-Up & Next Steps]
+
+//* xref:module-01.adoc[1. Podman AI Lab]
+//** xref:module-01.adoc#overview[Overview]
+//** xref:module-01.adoc#serve-model[Serve Model]
+
+//* xref:module-02.adoc[2. JupyterLab & Docling]
