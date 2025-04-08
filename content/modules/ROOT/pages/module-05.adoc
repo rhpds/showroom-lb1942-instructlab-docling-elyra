@@ -39,7 +39,29 @@ Open the *HITL-review-markdown.py* file and click the *Run* icon at the top. Thi
 +
 image::openshift/minio-utils-hitl-markdown-review.png[HITL markdown review,100%,100%]
 
-. Open the _docling-markdown-review.md_ file. TODO: WHAT DO WE WANT THEM TO DO HERE? 
+. Open the _docling-markdown-review.md_ file and check for any processing errors e.g. table alignment, list numbering
+
+For example:
+
+This is a page from the original PDF, notice the elements in the footer
+
+image::openshift/summit-pdf-render.png[HITL PDF render,100%,100%]
+
+*But the Markdown output has list numbering issues due to the items in the footer*
+
+image::openshift/markdown-error.png[HITL PDF render,100%,100%]
+
+*This would have to be fixed before continuing, for example*
+
+image::openshift/markdown-fixed.png[HITL markdown review,100%,100%]
+
+
+
+
+
+
+
+
 
 +
 When you're done reviewing the markdown file close it and rename the file _docling-markdown-approved.md_ run the *HITL_upload_markdown.py*. This will upload our reviewed markdown file to an s3 bucket and our QNA Generator node will pull download it to generate the qna.yaml file.
