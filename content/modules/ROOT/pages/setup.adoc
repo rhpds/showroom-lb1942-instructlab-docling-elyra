@@ -1,0 +1,84 @@
+= OpenShift AI
+
+Red Hat OpenShift AI (RHOAI) builds on the capabilities of Red Hat OpenShift to provide a single, consistent, enterprise-ready hybrid AI and MLOps platform. It provides tools across the full lifecycle of AI/ML experiments and models including training, serving, monitoring, and managing AI/ML models and AI-enabled applications.
+
+Red Hat OpenShift AI is a flexible and scalable MLOps (Machine Learning Operations) platform designed to provide organizations with a consistent environment for building, training, deploying, and monitoring artificial intelligence and machine learning models and applications. Built on the foundation of Red Hat OpenShift, an enterprise Kubernetes platform, it offers data scientists, developers, and ML engineers a comprehensive set of tools and capabilities to streamline the entire AI/ML lifecycle, from experimentation and development to production deployment and management at scale. Its primary goal is to accelerate the delivery of AI-powered applications by providing a robust, collaborative, and cloud-native platform.
+
+The platform integrates various open-source technologies and partner offerings, providing a curated collection of tools for tasks such as data preparation, model development using familiar environments like Jupyter notebooks, model training, serving, and monitoring. It emphasizes MLOps principles by facilitating automation, reproducibility, and collaboration across different teams involved in AI projects. By leveraging the underlying infrastructure of Red Hat OpenShift, OpenShift AI benefits from its scalability, security features, and ability to run consistently across hybrid cloud environments (on-premises, public cloud, or edge), enabling organizations to manage their AI workloads efficiently and effectively.
+
+
+. Click on the OpenShift AI route provided for you. Click on the *Log in with OpenShift* button.
+
++
+image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
+
+. Click on the *rhsso* button.
+
++
+image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
+
+. Enter your *username* and *password* for the lab and click on *Sign In*.
+
++
+image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
+
++
+You should now see the OpenShift AI dashboard. Click on the *summit_project* under Data Science Projects in the dashboard.
+
++
+image::openshift/rhoai-dashboard.png[RHOAI Dashboard,100%,100%]
+
+== Open the Workbench
+
+. Click on *Workbench*. We have one workbench with a Jupyter notebook running named *_elyra-docling-workbench_*. 
+
++
+image::openshift/rhoai-workbench.png[RHOAI Dashboard,100%,100%]
+
++
+NOTE: OpenShift AI out of the box provides Jupyter, VS Code, Cuda, and other popular IDEs as workbench images. You can https://ai-on-openshift.io/odh-rhoai/custom-notebooks/[create custom workbench images ,window=_blank] if a default one doesn't exist.
+
+. You'll need to login to you OpenShift AI workbench. Click on the *rhsso* button.
+
++
+image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
+
+. Enter your *username* and *password* for the lab and click on *Sign In*.
+
++
+image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
+
+. YourJupyterLab workbench should now be open. 
+
++
+image::openshift/rhoai-jupyter.png[JupyterLab workbench,100%,100%]
+
+. Click on the Git icon on the left menu and click *Clone a repository*.
+
++ 
+image::openshift/jupyter-git-clone.png[Button to clone a Git repository,100%,100%]
+
+. Clone the following repo:
+
++
+[source,bash]
+----
+https://github.com/jhurlocker/elyra_docling_rh_summit.git repo.
+----
+
++
+image::local/git-clone1.png[Box to clone a Git repository,100%,100%]
+
++
+Clone the https://github.com/noelo/instruct-generate repo as well.
+
++ 
+image::local/git-clone2.png[Box to clone a Git repository,100%,100%]
+
++
+You should now see the *elyra_docling_rh_summit* and *instruct_generate* directories in the file browser.
+
+. Open the *instruct_generate* directory and click on the Git icon on the left menu. Switch the branch to *Summit*.
+
++ 
+image::openshift/git-switch-branch.png[Switch branch to Summit,100%,100%]
