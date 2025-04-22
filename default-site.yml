@@ -1,6 +1,7 @@
 ---
 site:
-  title: LB1942 - InstructLab, Docling, & Elyra: Auto generate knowledge files from multiple data formats
+  title: |
+    LB1942 - InstructLab, Docling, & Elyra: Auto generate knowledge files from multiple data formats
   url: https://redhat-scholars.github.io/course-template
   start_page: modules::index.adoc
 
