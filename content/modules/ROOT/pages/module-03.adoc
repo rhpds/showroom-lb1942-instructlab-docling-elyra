@@ -1,4 +1,4 @@
-== Elyra[[elyra]]
+== Elyra Overview[[elyra]]
 
 Elyra is a set of AI-centric extensions to JupyterLab, and its pipeline capabilities are a core feature. Here's an overview of Elyra pipelines:
 
@@ -40,6 +40,8 @@ Elyra supports both generic pipelines (which can run on multiple platforms) and 
 * Scalability: Integration with platforms like Kubeflow Pipelines enables scalable execution of machine learning workflows.
 * Portability: The ability to run pipelines on different platforms provides flexibility and avoids vendor lock-in.
 
+=== Steps
+
 . We'll start by taking a look at our data science pipeline. 
 
 +
@@ -64,7 +66,7 @@ OpenShift AI Data Science Pipelines has a dependency on s3 object storage. We'll
 +
 image::openshift/dsp-runtimes.png[Data Science Pipelines,100%,100%]
 
-== Docling[[docling]]
+== Docling Overview[[docling]]
 
 Docling is an open-source toolkit designed to streamline the process of converting various document formats, particularly PDFs, into structured data that's readily usable by AI applications. Here's a breakdown of its key aspects:
 
@@ -101,7 +103,9 @@ Local execution capabilities for data privacy.
 Command-line interface (CLI) and Python API.
 In essence, Docling aims to bridge the gap between unstructured document data and the structured data needs of modern AI applications.
 
-. In your workbench with the *docling_elyra_summit.pipeline* open,  double click on the *PDF Converter* node. This should open the *../../ingest-summit.ipynb* Jupyter notebook. 
+=== Steps
+
+. In your workbench with the *docling_elyra_summit.pipeline* open,  double click on the *Docling* node. This should open the *../../ingest-summit.ipynb* Jupyter notebook. 
 
 +
 image::openshift/elyra-pdf-converter.png[Elyra PDF Converter Node,100%,100%]
@@ -109,7 +113,7 @@ image::openshift/elyra-pdf-converter.png[Elyra PDF Converter Node,100%,100%]
 +
 image::openshift/ingest-summit-notebook.png[ingest-summit-notebook,100%,100%]
 
-. Scroll down the notebook to the last two cells. This is where we're coveconverting the different file types into markdown with Docling. TODO - expand on this a little more.
+. Scroll down the notebook to the last two cells. This is where we're converting the different file types into markdown with Docling. TODO - expand on this a little more.
 
 +
 image::openshift/ingest-summit-notebook-docling-sections.png[Docling to markdown conversion,100%,100%]
