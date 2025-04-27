@@ -4,7 +4,7 @@ Red Hat OpenShift AI (RHOAI) builds on the capabilities of Red Hat OpenShift to 
 
 == Login to RHOAI
 
-. Click on the OpenShift AI route provided for you. Click on the *Log in with OpenShift* button.
+. Open $rhoai_dashboard[OpenShift AI^]Click on the *Log in with OpenShift* button.
 
 +
 image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]

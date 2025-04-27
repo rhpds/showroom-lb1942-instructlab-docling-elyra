@@ -12,9 +12,11 @@ Many times developers don't have access to data or environments to try out new t
 This lab will walk you through the persona of a rock star developer that starts locally to build a solution to automate the collection of data files and generation of qna.yaml files for InstructLab. You'll then see how to take that solution locally and deploy it onto an enterprise OpenShift cluster with OpenShift AI.
 ////
 
-This lab will walk you through an automated solution to generate an InstructLab qna.yaml file that can be used to fine tune LLMs (Large Language Models). The OpenShift AI data science pipeline used to automate data ingestion, docling conversion to markdown, and generating the qna.yaml file contains necessary HITL (Human In The Loop) steps to verify that the information contained in the markdown file and qna.yaml file contain high quality data. 
+This lab will walk you through an automated solution to generate an InstructLab qna.yaml file that can be used to fine tune LLMs (Large Language Models). We will be using an OpenShift AI data science pipeline to automate data ingestion, docling conversion to markdown, and generating the qna.yaml file. This pipeline contains the necessary HITL (Human In The Loop) steps to verify the information contained in the markdown file and qna.yaml file contain high quality data. 
 
-NOTE: HITL should not be ignored when using AI. Find out where AI can provide efficiency, but make sure Humans remain part of the process when necessary. +
+NOTE: HITL should not be ignored when using AI. Find out where AI can provide efficiency, but make sure Humans remain part of the process where necessary. +
 Without a human review of the markdown and qna.yaml file you will most certainly not have the appropriate context or most important domain knowledge captured in your files. This will lead to poor fine tuning results and will waste time and valuable resources running fine tuning over and over.
 
-Below is an architecture diagram displaying the 
+Below is an architecture diagram displaying the solution.
+
+TODO

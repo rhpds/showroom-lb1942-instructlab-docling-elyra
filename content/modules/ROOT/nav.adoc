@@ -1,5 +1,5 @@
 
-* xref:setup.adoc[1. OpenShift AI Setup]
+* xref:setup.adoc[1. Project Setup]
 
 * xref:module-03.adoc[2. Elyra & Docling]
 ** xref:module-03.adoc#elyra[Elyra]
