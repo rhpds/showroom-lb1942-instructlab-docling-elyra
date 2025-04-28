@@ -1,0 +1,101 @@
+== Run the Elyra Pipeline
+We'll run the pipeline from the *summit-workbench* Jupyter notebook we previously opened. Since Elyra is a visual representation of a pipeline it doesn't actually have a runtime built in. When we run the pipeline we are actually submitting the job to OpenShift AI Data Science Pipelines which then converts the pipeline run into a kubeflow run.
+
+== Run Pipeline[[elyra]]
+
+. Open the *summit-workbench* and open the *elyra_docling_rh_summit/openshift_solution/env.config* file. We have a Granite LLM (Large Language Model) running in our cluster that we'll use in the *QNA Generator* node to generate the question and answer pairs when our pipeline runs. 
++
+We'll need to put values in the env.config file for the *model-endpoint* and *model-token*.
+
++ 
+image::openshift/env-config.png[Environment config file,100%,100%]
+
+. Go to the OpenShift AI dashboard and click on *Data Science Projects* and click on *granite-model-project*. 
+
++ 
+image::openshift/granite-model-project.png[Granite model project,100%,100%]
+
+. Click on the *Internal and external endpoint details* link and click on the *Copy* button. 
+
++ 
+image::openshift/granite-model-url.png[Granite inference endpoint,100%,100%]
+
+. Go back to your Jupyter notebook and paste the external inference endpoint as the value for *model-endpoint* in your *env.config* file. 
++
+NOTE: Make sure you append '*/vl*' to the *model-endpoint* value!
+
++ 
+image::openshift/env-config-model-endpoint.png[Environment variable model endpoint,100%,100%]
+
+. Let's copy the model token now. Go back to the *granite-model-project* and scroll down to the Token authentication section. Click the *Copy* button next to the token secret. 
+
++ 
+image::openshift/granite-model-token.png[Granite model token,100%,100%]
+
+. Go back to your Jupyter notebook and paste the token secret as the value for *model-endpoint* in your *env.config* file. 
++
+NOTE: Make sure you append '*/vl*' to the *model-endpoint* value!
+
++ 
+image::openshift/env-config-model-token.png[Environment variable token,100%,100%]
+
+. Make sure your *env.config* file is saved. We'll now upload our Word, PDF, and *env.config* files to an s3 bucket so that our pipeline can pull them down when it runs.
+
+. Open the *elyra_docling_rh_summit/openshift_solution/minio_utilities/upload-env.py* and *elyra_docling_rh_summit/openshift_solution/minio_utilities/upload-pdf-docx.py* files and click *Run* in both files.
+
++ 
+image::openshift/upload-env.png[Upload env-config to s3,100%,100%]
+
++ 
+image::openshift/upload-pdf-docx.png[Upload PDF and DOCX to s3,100%,100%]
+
+. In the console output make sure the files were successfully uploaded to the *upload-files* bucket in Minio. You should see similar messages if the file uploads were successful.
+
++ 
+image::openshift/env-config-upload-output.png[env config upload output,100%,100%]
+
++ 
+image::openshift/pdf-docx-upload-output.png[PDF DOCX upload output,100%,100%]
+
+. Time to run the pipeline! Open the *elyra_docling_rh_summit/openshift_solution/elyra-docling-pipeline.pipeline* file and click the *Run* button.
+
++ 
+image::openshift/run-pipeline.png[Run pipeline,100%,100%]
+
+. Leave the Pipeline name as *elyra-docling-pipeline*, make sure the Runtime Configuration is *Data Science Pipeline*, and add your Minio service as the *minio_url* parameter. You can copy the URL below.
+
++
+[source,copy,role=execute]
+----
+http://minio.summit-[user].svc.cluster.local:9000
+----
+
++ 
+image::openshift/run-pipeline-options.png[Run pipeline,100%,100%]
+
+. If your pipeline started successfully you should see a pop up like the one below. Click on the *Run Details* link.
+
++ 
+image::openshift/pipeline-run-success-popup.png[Pipeline run success,100%,100%]
+
+. Under the *Experiments and runs* section in OpenShift AI you should see that your pipeline has started running. 
+
++ 
+image::openshift/pipeline-run-start-rhoai.png[Pipeline run start in RHOAI,100%,100%]
+
+. The pipeline will take a few minutes to run. While it's running you can take a look at some of the details about each node. Click on a node and select *Input/Output*. This section contains the execution name and a link with more detailed information. Any input parameters are also listed here.
+
++ 
+image::openshift/pipeline-input-output.png[Pipeline Input/Output in RHOAI,100%,100%]
+
+. You can also follow the logs of each node in the pipeline run. Select *Log* tab and you can view the raw logs or expand the log and watch it in real time.    
+
++ 
+image::openshift/pipeline-logs.png[Pipeline logs in RHOAI,100%,100%]
+
+. Your pipeline should successfully complete the *ingest Files*, *Docling*, and *Combine Markdown* nodes and wait at the *HITL Markdown* node. This node will wait for an approved markdown file to be uploaded to the *data-files* bucket in Minio.
+
++ 
+image::openshift/<TODO>.png[Pipeline logs in RHOAI,100%,100%]
+
+. 

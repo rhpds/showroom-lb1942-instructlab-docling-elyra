@@ -4,7 +4,7 @@ Red Hat OpenShift AI (RHOAI) builds on the capabilities of Red Hat OpenShift to 
 
 == Login to RHOAI
 
-. Open $rhoai_dashboard[OpenShift AI^]Click on the *Log in with OpenShift* button.
+. Open https://rhods-dashboard-redhat-ods-applications{$openshift_cluster_ingress_domain}[OpenShift AI^] and click on the *Log in with OpenShift* button.
 
 +
 image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
@@ -14,13 +14,13 @@ image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
 +
 image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
-. Enter your *username* and *password* for the lab and click on *Sign In*.
+. Enter your *username* ({$user}) and *password* ({$password}) for the lab and click on *Sign In*.
 
 +
 image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
 
 +
-You should now see the OpenShift AI dashboard. Click on the *summit_project* under Data Science Projects in the dashboard.
+You should now see the OpenShift AI dashboard. Click on the *summit-project-[user]* under Data Science Projects in the dashboard.
 
 +
 image::openshift/rhoai-dashboard.png[RHOAI Dashboard,100%,100%]
@@ -40,7 +40,7 @@ NOTE: OpenShift AI out of the box provides Jupyter, VS Code, Cuda, and other pop
 +
 image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
-. Enter your *username* and *password* for the lab and click on *Sign In*.
+. Enter your *username* ([$user]) and *password* ([$password]) for the lab and click on *Sign In*.
 
 +
 image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
@@ -79,6 +79,7 @@ You should now see the *elyra_docling_rh_summit* and *instruct_generate* directo
 +
 image::openshift/jupyter-cloned-directories.png[Cloned repositories,80%,80%]
 
+//// 
 == Deploy a Model
 
 We'll be deploying a quantized version of an LLM so we can run it on a CPU. Quantized LLMs have been converted from high-precision floating-point numbers to lower-precision data types to reduce its size and increase computational speed.
@@ -92,3 +93,4 @@ image::openshift/single-server-model.png[Single server model,100%,100%]
 
 + 
 image::openshift/deploy-model.png[Single server model,100%,100%]
+////

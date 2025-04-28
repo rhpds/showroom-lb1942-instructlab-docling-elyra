@@ -117,3 +117,19 @@ image::openshift/ingest-summit-notebook.png[ingest-summit-notebook,100%,100%]
 
 +
 image::openshift/ingest-summit-notebook-docling-sections.png[Docling to markdown conversion,100%,100%]
+
+== Q&A Generator[[qna]]
+The Q&A generator uses an LLM (Large Language Model) to generate questions and answer pairs from a markdown file. These questions and answers can be included in the final qna.yaml file that will be used by InstructLab for fine tuning.
+
+=== Steps
+
+. Open the *elyra-docling-pipeline.pipeline* file and double click on the *QNA Generator* node. The *injest-splitter* file should open.
+
++
+image::openshift/qna-pipeline-node.png[QNA Node,100%,100%]
+
+. Scroll down the notebook until you get to the cell where we're using the llamaindex OpenLLM connector to connect to an LLM. Note that we need to configure a model name, model URL endpoint, and the model token. In the next section we'll configure the OS environments so we have the correct values.
+
++
+image::openshift/injest-splitter-openllm.png[OpenLLM Config,100%,100%]
+
