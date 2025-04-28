@@ -25,9 +25,101 @@ You should now see the OpenShift AI dashboard. Click on the *summit-project-[use
 +
 image::openshift/rhoai-dashboard.png[RHOAI Dashboard,100%,100%]
 
+== Configure Data Science Pipelines
+Before we can create our OpenShift AI workbench we'll need to configure data science pipelines. Data science pipelines has a dependency on s3 object storage so we've pre installed Minio for you to make setup easier.
+
+. Click on *Configure pipeline server*
+
++
+image::openshift/configure-pipelines.png[Configure pipeline server,100%,100%]
+
+. Enter the following values in the form:
++
+*Access key*
++
+[source,copy,role=execute]
+----
+minio
+----
++
+*Secret key*
++
+[source,copy,role=execute]
+----
+minio123
+----
++
+*Endpoint*
++
+[source,copy,role=execute]
+----
+http://minio.summit-project-[user].svc.cluster.local:9000
+----
++
+*Region*
++
+[source,copy,role=execute]
+----
+us-east-1
+----
++
+*Bucket*
++
+[source,copy,role=execute]
+----
+pipelines
+----
++
+image::openshift/configure-pipelines-form.png[Configure pipeline form,100%,100%]
+
+. Wait until the pipeline server is configured. You should see the link to Import pipelines when it's ready. No need to click on the link. 
++
+image::openshift/pipelines-ready.png[Pipelines ready,100%,100%]
+
+== Create the Workbench
+
+. Click on the *Create a workbench* button. 
++
+image::openshift/create-workbench.png[Create workbench,100%,100%]
+
+. Enter the following values in the form:
++
+*Name*
++
+[source,copy,role=execute]
+----
+summit-workbench
+----
++
+*Image Selection*
++
+Select *Standard Data Science* from the dropdown. Keep the default *Version selection* that is recommended.
++
+*Environment Variables* - Click on *Add variable*
++
+Select *ConfigMap* as the environment variable type and *Key/value*.
++
+*Key*
++
+[source,copy,role=execute]
+----
+minio-url
+----
++
+*Value*
++
+[source,copy,role=execute]
+----
+http://minio.summit-project-[user].svc.cluster.local:9000
+----
++
+image::openshift/create-workbench-form1.png[Create workbench form,100%,100%]
++
+image::openshift/create-workbench-form2.png[Create workbench form,100%,100%]
+
 == Open the Workbench
 
-. Click on *Workbench*. We have one workbench with a Jupyter notebook running named *_summit-workbench_*. 
+. Once the workbench status is *Running* click on the *Open* link.
 
 +
 image::openshift/rhoai-workbench.png[RHOAI Workbench,100%,100%]
@@ -45,7 +137,7 @@ image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 +
 image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
 
-. YourJupyterLab workbench should now be open. 
+. Your JupyterLab workbench should now be open. 
 
 +
 image::openshift/rhoai-jupyter.png[JupyterLab workbench,100%,100%]

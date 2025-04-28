@@ -9,7 +9,7 @@
 ** xref:module-07.adoc#elyra[Run Pipeline]
 ** xref:module-07.adoc#viewrun[View the Pipeline Run]
 
-* xref:module-04.adoc[4. OpenShift Pipelines & object store]
+* xref:module-04.adoc[4. OpenShift Pipelines & Events]
 ** xref:module-04.adoc#ocppipelines[OpenShift Pipelines]
 ** xref:module-04.adoc#minio[Minio]
 
