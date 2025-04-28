@@ -33,6 +33,7 @@ Select the *Default* experiment and open the most recent pipeline run. To speed 
 +
 image::openshift/cached-dsp-run.png[Cached DSP run,100%,100%]
 
+. That brings us to the end of the lab. Congratulations for finishing it!
 
 //// 
 . Let's review the markdown file so we can move the pipeline along.
