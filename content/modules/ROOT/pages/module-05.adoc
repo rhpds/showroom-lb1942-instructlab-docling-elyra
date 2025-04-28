@@ -6,10 +6,13 @@ NOTE: To interact with Minio we'll need to use a python script (we can't downloa
 
 . Go back to your OpenShift AI workbench and open the *elyra_docling_rh_summit/openshift_solution/minio_utilities* directory. 
 +
-Open the *upload-file-to-s3.py* file and click the *Run* icon at the top. This python script will upload a PDF to our Minio s3 bucket (upload-bucket). 
+Open the *upload-env.py* file and click the *Run* icon at the top. This python script will upload the env.config file to our Minio s3 bucket (upload-bucket). 
 
 +
-image::openshift/minio-utils-upload.png[Python s3 bucket upload,100%,100%]
+NOTE: We're just uploading the env.config file again to our s3 bucket to trigger our event listener. Anytime we add data to the upload-bucket in Minio the event we configured will send a notification to our event listener in OpenShift.
+
++
+image::openshift/upload-env.png[Upload env.config,100%,100%]
 
 . Our event listener should have received the notification from the Minio event that a new file was uploaded and should have triggered a new pipeline run. 
 
@@ -25,10 +28,13 @@ image::openshift/ocp-pipeline-run-success.png[OCP Pipeline run,100%,100%]
 . Let's take a look at our OpenShift AI pipeline run. Open your OpenShift AI dashboard and click *Experiments* -> *Experiments and Runs* from the left menu. 
 
 +
-Select the *Default* experiment. You should see that a pipeline has started, but hasn't finished yet. That's because it's waiting at our HITL markdown review task.
+Select the *Default* experiment and open the most recent pipeline run. To speed things up for the lab we've enabled caching so this pipeline should run the entire way through. In a real world implementation we would want to review our markdown and qna.yaml files as we did in the previous sections.
 
-TODO - get screenshot of DSP pipeline to review status after it's initially started.
++
+image::openshift/cached-dsp-run.png[Cached DSP run,100%,100%]
 
+
+//// 
 . Let's review the markdown file so we can move the pipeline along.
 
 +
@@ -94,3 +100,4 @@ Your pipeline should be completed now!
 image::openshift/minio-utils-hitl-qna-approved.png[HITL QNA approved,100%,100%]
 
 . TODO: THEY SHOULD CHECK THE COMPLETED PIPELINE TO MAKE SURE IT RAN SUCCESSFULLY
+////

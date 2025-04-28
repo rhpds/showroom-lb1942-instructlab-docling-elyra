@@ -1,5 +1,7 @@
 = OpenShift Pipelines and Minio
 
+In the last section we manually ran the Elyra Data Science pipeline from a Jupyter notebook, but what if we want to run this pipeline anytime we get new data? For that we can use OpenShift event listeners and OpenShift pipelines to automatically trigger new pipeline runs when data is uploaded to our s3 bucket.
+
 == Event Listeners[[ocppipelines]]
 
 . Login to your OpenShift console.

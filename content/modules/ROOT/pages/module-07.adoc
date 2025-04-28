@@ -103,15 +103,31 @@ Click on the *Run* button and make sure the combined.md file was downloaded with
 + 
 image::openshift/hitl-review-markdown.png[HITL markdown review,100%,100%]
 
-. You should now see the *docling-markdown-review.md* file in minio_utilities directory. Open the *docling-markdown-review.md* file.
+. You should now see the *docling-markdown-review.md* file in minio_utilities directory.
 +
-When preparing your markdown files for InstructLab it very important that this file contains properly formatted data and domain specific data for the intended use case. 
+When preparing your markdown files for InstructLab it's very important that this file contains properly formatted data and domain specific data for the intended use case. 
 +
 In most cases generated markdown files will need to be manually edited to make sure the context is correct.
-+
-For this lab we'll assume that you made the appropriate changes and the markdown file contains the correct data for the intended use case and renamed the approved version as *docling-markdown-approved.md*.
 + 
 image::openshift/hitl-review-mdfile.png[HITL review markdown file,100%,100%]
++
+Open the *docling-markdown-review.md* file and check for any processing errors e.g. table alignment, list numbering
++
+For example:
++
+This is a page from the original PDF, notice the elements in the footer
++
+image::openshift/summit-pdf-render.png[HITL PDF render,100%,100%]
++
+*But the Markdown output has list numbering issues due to the items in the footer*
++
+image::openshift/markdown-error.png[HITL PDF render,100%,100%]
++
+*This would have to be fixed before continuing, for example*
++
+image::openshift/markdown-fixed.png[HITL markdown review,100%,100%]
++
+For this lab we'll assume that you made the appropriate changes and renamed the approved version as *docling-markdown-approved.md*.
 
 . Now that we have a reviewed and approved markdown file we can upload to an s3 bucket so our pipeline can move on to generate the qna.yaml file (Q&A Generator node).
 + 
