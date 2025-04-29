@@ -6,7 +6,7 @@ nav:
 
 asciidoc:
   attributes:
-    lab_name: "Autogenerate knowledge files from multiple data formats with InstructLab, Docling, and Elyra"
+    lab_name: "Autogenerate knowledge files from multiple data formats with InstructLab, Docling, and Elyra"    
     release-version: master
     page-pagination: true
     my_var: "foo"
@@ -14,6 +14,9 @@ asciidoc:
     ssh_user: devops
     ssh_password: devops
     ssh_command: ssh someone@example.com
+    user: user99
+    password: REPLACE_ME
+    openshift_cluster_ingress_domain: apps.cluster-jmh9n.jmh9n.sandbox3807.opentlc.com
     page-links:
     - url: https://redhat.com
       text: Red Hat
