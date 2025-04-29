@@ -14,7 +14,7 @@ image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
 +
 image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
-. Enter you r*username* `{user}` and *password* `{password}` for the lab and click on *Sign In*.
+. Enter your *username* `{user}` and *password* `{password}` for the lab and click on *Sign In*.
 
 +
 image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
