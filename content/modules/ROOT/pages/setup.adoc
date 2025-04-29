@@ -4,7 +4,7 @@ Red Hat OpenShift AI (RHOAI) builds on the capabilities of Red Hat OpenShift to 
 
 == Login to RHOAI
 
-. Open https://rhods-dashboard-redhat-ods-applications{{$openshift_cluster_ingress_domain}}[OpenShift AI^] and click on the *Log in with OpenShift* button.
+. Open https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}[OpenShift AI^] and click on the *Log in with OpenShift* button.
 
 +
 image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
@@ -14,13 +14,13 @@ image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
 +
 image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
-. Enter your *username* ({{$user}}) and *password* ({{$password}}) for the lab and click on *Sign In*.
+. Enter your *username* {user} and *password* {password} for the lab and click on *Sign In*.
 
 +
 image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
 
 +
-You should now see the OpenShift AI dashboard. Click on the *summit-project-[user]* under Data Science Projects in the dashboard.
+You should now see the OpenShift AI dashboard. Click on the *summit-project-{user}* under Data Science Projects in the dashboard.
 
 +
 image::openshift/rhoai-dashboard.png[RHOAI Dashboard,100%,100%]
@@ -51,9 +51,9 @@ minio123
 +
 *Endpoint*
 +
-[source,copy,role=execute]
+[source,copy,role=execute,subs=attributes]
 ----
-http://minio.summit-project-[user].svc.cluster.local:9000
+http://minio.summit-project-{user}.svc.cluster.local:9000
 ----
 +
 *Region*
@@ -108,9 +108,9 @@ minio-url
 +
 *Value*
 +
-[source,copy,role=execute]
+[source,copy,role=execute,subs=attributes]
 ----
-http://minio.summit-project-[user].svc.cluster.local:9000
+http://minio.summit-project-{user}.svc.cluster.local:9000
 ----
 +
 image::openshift/create-workbench-form1.png[Create workbench form,100%,100%]
