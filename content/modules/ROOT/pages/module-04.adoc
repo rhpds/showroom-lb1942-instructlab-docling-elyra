@@ -19,7 +19,7 @@ image::openshift/openshift-rhsso-page.png[OpenShift rhsso screen,80%,80%]
 +
 image::openshift/openshift-userpass-page.png[OpenShift user/pass screen,80%,80%]
 
-. You should see the OpenShift Web console with the *summit_project* 
+. You should see the OpenShift Web console with the *summit-project-{user}*. Switch to the *Administrator* view in the left drop down.
 
 +
 image::openshift/ocp-project.png[OpenShift project,100%,100%]
@@ -41,17 +41,17 @@ image::openshift/ocp-pipeline.png[OpenShift pipeline,100%,100%]
 
 == Minio[[minio]]
 
-We're using Mino for our s3 buckets.
+We're using Minio for our s3 buckets.
 
-. Get the route for Mino by going to the OpenShift web console and make sure you change your Project to *All Projects*. Select *Networking* -> *Routes*. Type _minio-ui_ into the search bar and click the *Location* URL to open the Minio web console.
-
-+
-image::openshift/minio-route.png[Mino route,100%,100%]
-
-. Login to the Mino web console with the user *minio* and password *minio123*.
+. Get the route for Minio by going to the OpenShift web console and make sure you change your Project to *All Projects*. Select *Networking* -> *Routes*. Type _minio-ui_ into the search bar and click the *Location* URL to open the Minio web console.
 
 +
-image::openshift/minio-login.png[Mino login page,80%,80%]
+image::openshift/minio-route.png[Minio route,100%,100%]
+
+. Login to the Minio web console with the user *minio* and password *minio123*.
+
++
+image::openshift/minio-login.png[Minio login page,80%,80%]
 
 . We'll create an event destination so that our event listener can trigger our OpenShift pipeline whenever we upload files to the s3 bucket.
 
@@ -59,34 +59,50 @@ image::openshift/minio-login.png[Mino login page,80%,80%]
 Click on *Events* on the left menu and click on the *Add event destination* button.
 
 +
-image::openshift/minio-add-event-destination.png[Mino add event destination,100%,100%]
+image::openshift/minio-add-event-destination.png[Minio add event destination,100%,100%]
 
 . Scroll down until you see the webhook function. Click on *Webhook*. 
 
 +
-image::openshift/minio-webhook-event.png[Mino webhook event,100%,100%]
+image::openshift/minio-webhook-event.png[Minio webhook event,100%,100%]
 
-. We'll need to get our OpenShift token before we can completely configure the event destination in Minio. 
-
+. We'll need to get our OpenShift token before we can configure the event destination in Minio. Click on your username in the top right corner of the OpenShift web console and click *Copy login command*.
++
+image::openshift/copy-login-ocp.png[OpenShift token,100%,100%]
++
+Copy the token to add to the event destination.
 +
 image::openshift/ocp-token.png[OpenShift token,100%,100%]
 
-. Enter in _dsp-event-listener_ for the *Identifier*, the event listener route URL for the *Endpoint*, and your OpenShift token in the *Auth Token* field.
+. Enter in the *Identifier*, the event listener route URL for the *Endpoint*, and your OpenShift token in the *Auth Token* field.
++
+*Event listener route*
++
+[source,copy,role=execute]
+----
+dsp-event-listener
+----
++
+*Event listener route*
++
+[source,copy,role=execute]
+----
+https://el-simple-pipeline-listener-summit-project-{user}.{openshift_cluster_ingress_domain}/
+----
++
+Click *Save Event Destination* and click the *Refresh* button and refresh the page in your browser.
 
 +
-Click *Save Event Destination* 
-
-+
-image::openshift/minio-event-destination.png[Mino configure event destination,100%,100%]
+image::openshift/minio-event-destination.png[Minio configure event destination,100%,100%]
 
 . Under Administration on the left hand menu click *Buckets*. Open the *upload-files* bucket and click *Events* for the upload-files bucket. Click on *Subscribe to Event*.
 
 +
-image::openshift/minio-subscribe-to-events.png[Mino subscribe to events,100%,100%]
+image::openshift/minio-subscribe-to-events.png[Minio subscribe to events,100%,100%]
 
 . Select the *dsp-event-listener* webhook from the dropdown. Select the *PUT - Object Uploaded* event and click *Save*.
 
 +
-image::openshift/minio-subscribe-to-bucket-events.png[Mino subscribe to events,100%,100%]
+image::openshift/minio-subscribe-to-bucket-events.png[Minio subscribe to events,100%,100%]
 
-Your s3 bucket is now configured to send an event to your OpenShift event listener every time a file is uploaded. In the next section we'll upload a file and see how it runs our pipelines!
+Your s3 bucket is now configured to send an event to your OpenShift event listener every time a file is uploaded. In the next section we'll upload a file and see how it runs our pipeline!

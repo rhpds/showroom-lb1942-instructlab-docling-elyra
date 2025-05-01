@@ -3,7 +3,7 @@ We'll run the pipeline from the *summit-workbench* Jupyter notebook we previousl
 
 == Run Pipeline[[elyra]]
 
-. Open the *summit-workbench* and open the *elyra_docling_rh_summit/openshift_solution/env.config* file. We have a Granite LLM (Large Language Model) running in our cluster that we'll use in the *QNA Generator* node to generate the question and answer pairs when our pipeline runs. 
+. In your *summit-workbench* open the *elyra_docling_rh_summit/openshift_solution/env.config* file. We have a Granite LLM (Large Language Model) running in our cluster that we'll use in the *QNA Generator* node to generate the question and answer pairs when our pipeline runs. 
 +
 We'll need to put values in the env.config file for the *model-endpoint* and *model-token*.
 
@@ -67,7 +67,7 @@ image::openshift/run-pipeline.png[Run pipeline,100%,100%]
 +
 [source,copy,role=execute]
 ----
-http://minio.summit-project-[user].svc.cluster.local:9000
+http://minio.summit-project-{user}.svc.cluster.local:9000
 ----
 
 + 
