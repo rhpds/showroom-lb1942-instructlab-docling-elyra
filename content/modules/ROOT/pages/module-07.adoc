@@ -1,6 +1,8 @@
 == Run the Elyra Pipeline
 We'll run the pipeline from the *summit-workbench* Jupyter notebook we previously opened. Since Elyra is a visual representation of a pipeline it doesn't actually have a runtime built in. When we run the pipeline we are actually submitting the job to OpenShift AI Data Science Pipelines which then converts the pipeline run into a kubeflow run.
 
+image::openshift/elyra-pipeline-arch.png[Elyra pipeline,100%,100%]
+
 == Run Pipeline[[elyra]]
 
 . In your *summit-workbench* open the *elyra_docling_rh_summit/openshift_solution/env.config* file. We have a Granite LLM (Large Language Model) running in our cluster that we'll use in the *QNA Generator* node to generate the question and answer pairs when our pipeline runs. 
