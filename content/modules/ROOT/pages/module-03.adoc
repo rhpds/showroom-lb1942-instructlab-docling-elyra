@@ -32,6 +32,7 @@ Elyra uses runtime configurations to store metadata about the target execution e
 
 Elyra supports both generic pipelines (which can run on multiple platforms) and runtime-specific pipelines (which are designed for a particular platform).
 
+//// 
 *Key Features and Benefits*
 
 * Simplified Workflow Creation: The visual editor makes it easier to create complex workflows without writing extensive code.
@@ -39,6 +40,7 @@ Elyra supports both generic pipelines (which can run on multiple platforms) and 
 * Improved Reproducibility: Pipelines provide a consistent and reproducible way to execute workflows.
 * Scalability: Integration with platforms like Kubeflow Pipelines enables scalable execution of machine learning workflows.
 * Portability: The ability to run pipelines on different platforms provides flexibility and avoids vendor lock-in.
+////
 
 === Steps
 
@@ -58,15 +60,21 @@ This node runs the *copy_files.py* Python script with the *Datascience with Pyth
 +
 image::openshift/ingest-node-properties.png[Ingest node properties,100%,100%]
 
-. Click on the *open runtimes* icon. This OpenShift AI workbench image has the Data Science Pipelines runtimes pre-configured. Note the Data Science Pipelines API Endpoint points to your OpenShift AI instance.
+. Click on the *Pipeline Parameters* for the *Ingest Files* node. Note that we are using a parameter nameed *_minio_url_* in the s3 object store URL. Each node in the pipeline can use this parameter to connect to s3 storage.
 
 +
-OpenShift AI Data Science Pipelines has a dependency on s3 object storage. We'll go over the s3 object store in upcoming sections.
+image::openshift/dsp-pipeline-params.png[Pipeline parameters,100%,100%]
+
+. Click on the *open runtimes* icon. This OpenShift AI workbench image has the Data Science Pipelines runtimes pre-configured. Note the Data Science Pipelines API Endpoint points to your OpenShift AI instance.
 
 +
 image::openshift/dsp-runtimes.png[Data Science Pipelines,100%,100%]
 
+. Feel free to take a look at the other nodes in the pipeline as well to see what properties are configured and what code they run.
+
 == Docling Overview[[docling]]
+
+image::openshift/docling-workflow-image.png[Docling overview,80%,80%]
 
 Docling is an open-source toolkit designed to streamline the process of converting various document formats, particularly PDFs, into structured data that's readily usable by AI applications. Here's a breakdown of its key aspects:
 
@@ -96,11 +104,11 @@ It's designed to run efficiently on standard hardware, making it accessible to a
 
 *Key Features:*
 
-Ability to handle scanned PDFs with robust OCR support.
-Metadata extraction (title, authors, references, etc.).
-Flexible output formats (JSON, Markdown, HTML).
-Local execution capabilities for data privacy.
-Command-line interface (CLI) and Python API.
+- Ability to handle scanned PDFs with robust OCR support.
+- Flexible output formats (JSON, Markdown, HTML).
+- Local execution capabilities for data privacy.
+- Command-line interface (CLI) and Python API.
+
 In essence, Docling aims to bridge the gap between unstructured document data and the structured data needs of modern AI applications.
 
 === Steps
@@ -110,10 +118,15 @@ In essence, Docling aims to bridge the gap between unstructured document data an
 +
 image::openshift/elyra-pdf-converter.png[Elyra PDF Converter Node,100%,100%]
 
+. Notice in the first cell of the notebook we install docling. After docling is installed we load the PDF and DOCX documents. 
+
 +
 image::openshift/ingest-summit-notebook.png[ingest-summit-notebook,100%,100%]
 
-. Scroll down the notebook to the last two cells. This is where we're converting the different file types into markdown with Docling. TODO - expand on this a little more.
+. Scroll down the notebook to the last two cells. This is where we're converting the different file types into markdown with Docling. 
+- The DocumnetConverter is configured to only convert files with PDF and DOCX extensions. 
+- If the file type is PDF a StandardPdfPipeline will be used, if the file type is DOCX a SimplePipeline will be used.
+- In the last cell the files are saved as markdown (.md) files.
 
 +
 image::openshift/ingest-summit-notebook-docling-sections.png[Docling to markdown conversion,100%,100%]
@@ -132,4 +145,9 @@ image::openshift/qna-pipeline-node.png[QNA Node,100%,100%]
 
 +
 image::openshift/injest-splitter-openllm.png[OpenLLM Config,100%,100%]
+
+. Scroll down to the cell with the process_chunk function. This is where we send a request to the LLM to generate our question and answer paris from the provided markdown file.
+
++
+image::openshift/process-chunk.png[Process chunk,100%,100%]
 

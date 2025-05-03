@@ -1,10 +1,14 @@
 = {lab_name}
 
-One of the main challenges of fine-tuning a large language model (LLM) is sourcing and processing high-quality training data, as organizations often store knowledge in multiple formats and locations. This information must be converted into a common format in an automated, structure approach. Docling is an open source tool that supports parsing and exporting documents to a common readable format. Organizations can then create a knowledge base for fine-tuning LLMs with InstructLab.
+== Overview
+
+One of the main challenges of fine-tuning a Large Language Model (LLM) is sourcing and processing high-quality training data, as organizations often store knowledge in multiple formats and locations. This information must be converted into a common format in an automated, structured approach. https://docling-project.github.io/docling/[Docling^] is an open source tool that supports parsing and exporting documents to a common readable format. Organizations can then create a knowledge base for fine-tuning LLMs with https://https://instructlab.ai/[InstructLab^].
+
+This lab will walk you through an automated solution to generate an InstructLab https://docs.instructlab.ai/taxonomy/knowledge/file_structure/#__tabbed_1_2[qna.yaml file^] that can be used to fine tune LLMs. We will be using an OpenShift AI https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.19/html-single/working_with_data_science_pipelines/index#idm140613501220224[data science pipeline^] to automate data ingestion, Docling conversion of PDF and DOCX files to markdown, and generating the qna.yaml file. This pipeline contains the necessary HITL (Human In The Loop) steps for ensuring high-quality data in the markdown file and qna.yaml file. 
 
 image::elyra-pipeline.png[elyra-pipeline,100%,100%]
 
-== Getting started
+NOTE: Integrating https://hai.stanford.edu/news/humans-loop-design-interactive-ai-systems#:~:text=A%20Different%20Approach:%20Designing%20with%20a%20Human%20in%20the%20Loop[HITL^] is critical for effective AI use. While AI offers efficiency, it's vital to identify points where human involvement is necessary. Critically, a human review of markdown and qna.yaml files is indispensable because AI alone lacks the context and crucial domain knowledge required. Without this human input fine-tuning efforts will likely fail, resulting in repeated attempts that waste significant time and resources.
 
 ////
 Many times developers don't have access to data or environments to try out new tools or solutions. Enabling developers to experiment with new tools and test solutions locally can speed up development and help prove out solutions before organizations make the decision to bring those tools into their development clusters.##
@@ -12,7 +16,3 @@ Many times developers don't have access to data or environments to try out new t
 This lab will walk you through the persona of a rock star developer that starts locally to build a solution to automate the collection of data files and generation of qna.yaml files for InstructLab. You'll then see how to take that solution locally and deploy it onto an enterprise OpenShift cluster with OpenShift AI.
 ////
 
-This lab will walk you through an automated solution to generate an InstructLab qna.yaml file that can be used to fine tune LLMs (Large Language Models). We will be using an OpenShift AI data science pipeline to automate data ingestion, docling conversion to markdown, and generating the qna.yaml file. This pipeline contains the necessary HITL (Human In The Loop) steps to verify the information contained in the markdown file and qna.yaml file contain high quality data. 
-
-NOTE: HITL should not be ignored when using AI. Find out where AI can provide efficiency, but make sure Humans remain part of the process where necessary. +
-Without a human review of the markdown and qna.yaml file you will most certainly not have the appropriate context or most important domain knowledge captured in your files. This will lead to poor fine tuning results and will waste time and valuable resources running fine tuning over and over.

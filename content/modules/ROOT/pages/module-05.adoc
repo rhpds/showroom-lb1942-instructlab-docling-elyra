@@ -2,7 +2,7 @@
 
 image::openshift/trigger-pipeline-arch.png[Trigger pipeline,100%,100%]
 
-To run the data science pipeline on OpenShift AI all we need to do is upload a file to our *upload-bucket* in Minio. That will notify our event listener a new file has been uploaded to the bucket and the event listener along with the trigger template will start our OpenShift AI Data Science Pipeline.
+To run the data science pipeline on OpenShift AI all we need to do is upload a file to our *upload-bucket* in Minio. The Minio event destination will notify our event listener that a new file has been uploaded to the bucket and the event listener along with the trigger template will start our OpenShift AI Data Science Pipeline.
 
 NOTE: To interact with Minio we'll need to use a python script (we can't download/upload files on the lab laptops).  
 
@@ -11,7 +11,7 @@ NOTE: To interact with Minio we'll need to use a python script (we can't downloa
 Open the *upload-env.py* file and click the *Run* icon at the top. This python script will upload the env.config file to our Minio s3 bucket (upload-bucket). 
 
 +
-NOTE: We're just uploading the env.config file again to our s3 bucket to trigger our event listener. Anytime we add data to the upload-bucket in Minio the event we configured will send a notification to our event listener in OpenShift.
+NOTE: We're just uploading the env.config file again to our s3 bucket to trigger our event listener. Any file we add to the upload-bucket in Minio will send a notification to our event listener in OpenShift.
 
 +
 image::openshift/upload-env.png[Upload env.config,100%,100%]
@@ -19,7 +19,7 @@ image::openshift/upload-env.png[Upload env.config,100%,100%]
 . Our event listener should have received the notification from the Minio event that a new file was uploaded and should have triggered a new pipeline run. 
 
 +
-Go back to you OpenShift web console and select the *Pipelines* from the left hand menu. Click on *PipelineRuns*. 
+Go back to you https://console-openshift-console.{openshift_cluster_ingress_domain}[OpenShift web console^] and select the *Pipelines* from the left hand menu. Click on *PipelineRuns*. 
 
 +
 You should see a successful pipeline run.
@@ -27,7 +27,7 @@ You should see a successful pipeline run.
 +
 image::openshift/ocp-pipeline-run-success.png[OCP Pipeline run,100%,100%]
 
-. Let's take a look at our OpenShift AI pipeline run. Open your OpenShift AI dashboard and click *Experiments* -> *Experiments and Runs* from the left menu. 
+. Let's take a look at our OpenShift AI pipeline run. Open your https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}[OpenShift AI^] dashboard and click *Experiments* -> *Experiments and Runs* from the left menu. 
 
 +
 Select the *Default* experiment and open the most recent pipeline run. To speed things up for the lab we've enabled caching so this pipeline should run the entire way through. In a real world implementation we would want to review our markdown and qna.yaml files as we did in the previous sections.
@@ -35,7 +35,13 @@ Select the *Default* experiment and open the most recent pipeline run. To speed 
 +
 image::openshift/cached-dsp-run.png[Cached DSP run,100%,100%]
 
-. That brings us to the end of the lab. Congratulations!
+. That brings us to the end of the lab. image:openshift/celebrate.png[Celebrate!,2%,2%] Congratulations for making it to the end! image:openshift/celebrate.png[Celebrate!,2%,2%] 
+
+
+
+
+
+
 
 //// 
 . Let's review the markdown file so we can move the pipeline along.

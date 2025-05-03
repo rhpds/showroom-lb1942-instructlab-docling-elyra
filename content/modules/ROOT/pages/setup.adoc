@@ -14,7 +14,21 @@ image::openshift/openshift-login-page.png[OpenShift Login,80%,80%]
 +
 image::openshift/openshift-rhsso-page.png[Login with rhsso,80%,80%]
 
-. Enter your *username* `{user}` and *password* `{password}` for the lab and click on *Sign In*.
+. Enter your *username* and *password*  for the lab and click on *Sign In*.
++
+*Username*
++
+[source,copy,role=execute,subs=attributes]
+----
+{user}
+----
++
+*Password*
++
+[source,copy,role=execute,subs=attributes]
+----
+{password}
+----
 
 +
 image::openshift/openshift-userpass-page.png[Login with username and password,80%,80%]
@@ -119,7 +133,7 @@ http://minio.summit-project-{user}.svc.cluster.local:9000
 image::openshift/create-workbench-form2.png[Create workbench form,90%,90%]
 
 
-. Leave the other default values and click on *Create Workbench*. 
+. Leave the default values for the other fields and click on *Create Workbench*. 
 +
 image::openshift/create-workbench-button.png[Create workbench button,100%,100%]
 

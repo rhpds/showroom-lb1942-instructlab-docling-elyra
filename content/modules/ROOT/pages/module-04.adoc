@@ -1,10 +1,10 @@
 = OpenShift Pipelines and Minio
 
-In the last section we manually ran the Elyra Data Science pipeline from a Jupyter notebook, but what if we want to run this pipeline anytime we get new data? For that we can use OpenShift event listeners and OpenShift pipelines to automatically trigger new pipeline runs when data is uploaded to our s3 bucket.
+In the last section we manually ran the Elyra Data Science pipeline from a Jupyter notebook, but what if we want to run this pipeline anytime we get new data? To automate this workflow we can use OpenShift event listeners and OpenShift pipelines to automatically trigger new pipeline runs when data is uploaded to our s3 bucket.
 
 == Event Listeners[[ocppipelines]]
 
-. Login to your OpenShift console.
+. Login to your https://console-openshift-console.{openshift_cluster_ingress_domain}[OpenShift console^].
 
 +
 image::openshift/openshift-login-page.png[OpenShift login screen,80%,80%]
@@ -15,6 +15,20 @@ image::openshift/openshift-login-page.png[OpenShift login screen,80%,80%]
 image::openshift/openshift-rhsso-page.png[OpenShift rhsso screen,80%,80%]
 
 . Login with your username and password.
++
+*Username*
++
+[source,copy,role=execute,subs=attributes]
+----
+{user}
+----
++
+*Password*
++
+[source,copy,role=execute,subs=attributes]
+----
+{password}
+----
 
 +
 image::openshift/openshift-userpass-page.png[OpenShift user/pass screen,80%,80%]
@@ -43,13 +57,28 @@ image::openshift/ocp-pipeline.png[OpenShift pipeline,100%,100%]
 
 We're using Minio for our s3 buckets.
 
+//// 
 . Get the route for Minio by going to the OpenShift web console and make sure you change your Project to *All Projects*. Select *Networking* -> *Routes*. Type _minio-ui_ into the search bar and click the *Location* URL to open the Minio web console.
 
 +
 image::openshift/minio-route.png[Minio route,100%,100%]
+////
 
-. Login to the Minio web console with the user *minio* and password *minio123*.
-
+. Login to the https://minio-ui-summit-project-{user}.{openshift_cluster_ingress_domain}/[*Minio web console*^].
++
+*Minio username*
++
+[source,copy,role=execute]
+----
+minio
+----
++
+*Minio password*
++
+[source,copy,role=execute]
+----
+minio123
+----
 +
 image::openshift/minio-login.png[Minio login page,80%,80%]
 
@@ -66,11 +95,16 @@ image::openshift/minio-add-event-destination.png[Minio add event destination,100
 +
 image::openshift/minio-webhook-event.png[Minio webhook event,100%,100%]
 
-. We'll need to get our OpenShift token before we can configure the event destination in Minio. Click on your username in the top right corner of the OpenShift web console and click *Copy login command*.
+. We'll need to get our OpenShift token before we can configure the event destination in Minio. You can get the https://oauth-openshift.apps.cluster-bmh7t.bmh7t.sandbox3715.opentlc.com/oauth/token/request[token^] from the OpenShift web console. 
+
+////
+Click on your username in the top right corner of the OpenShift web console and click *Copy login command*.
+
 +
 image::openshift/copy-login-ocp.png[OpenShift token,100%,100%]
-+
-Copy the token to add to the event destination.
+////
+
+. Click *Display Token* and copy the token to add to the event destination.
 +
 image::openshift/ocp-token.png[OpenShift token,100%,100%]
 
@@ -78,14 +112,14 @@ image::openshift/ocp-token.png[OpenShift token,100%,100%]
 +
 *Event listener route*
 +
-[source,copy,role=execute]
+[source,copy,role=execute,subs=attributes]
 ----
 dsp-event-listener
 ----
 +
 *Event listener route*
 +
-[source,copy,role=execute]
+[source,copy,role=execute,subs=attributes]
 ----
 https://el-simple-pipeline-listener-summit-project-{user}.{openshift_cluster_ingress_domain}/
 ----

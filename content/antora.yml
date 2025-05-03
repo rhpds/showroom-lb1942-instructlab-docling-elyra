@@ -14,9 +14,9 @@ asciidoc:
     ssh_user: devops
     ssh_password: devops
     ssh_command: ssh someone@example.com
-    user: user99
+    user: user1
     password: REPLACE_ME
-    openshift_cluster_ingress_domain: apps.cluster-jmh9n.jmh9n.sandbox3807.opentlc.com
+    openshift_cluster_ingress_domain: apps.cluster-bmh7t.bmh7t.sandbox3715.opentlc.com
     page-links:
     - url: https://redhat.com
       text: Red Hat
