@@ -2,7 +2,7 @@
 
 Red Hat OpenShift AI (RHOAI) builds on the capabilities of Red Hat OpenShift to provide a single, consistent, enterprise-ready hybrid AI and MLOps platform. It provides tools across the full lifecycle of AI/ML experiments and models including training, serving, monitoring, and managing AI/ML models and AI-enabled applications.
 
-== Login to RHOAI
+== Login to RHOAI[[rhoai-login]]
 
 . Open https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}[OpenShift AI^] and click on the *Log in with OpenShift* button.
 
@@ -39,7 +39,7 @@ You should now see the OpenShift AI dashboard. Click on the *summit-project-{use
 +
 image::openshift/rhoai-dashboard.png[RHOAI Dashboard,100%,100%]
 
-== Configure Data Science Pipelines
+== Configure Data Science Pipelines[[configure-dsp]]
 Before we can create our OpenShift AI workbench we'll need to configure data science pipelines. Data science pipelines has a dependency on s3 object storage so we've pre installed Minio for you to make setup easier.
 
 . Click on *Configure pipeline server*
@@ -90,7 +90,7 @@ image::openshift/configure-pipelines-form.png[Configure pipeline form,100%,100%]
 +
 image::openshift/pipelines-ready.png[Pipelines ready,100%,100%]
 
-== Create the Workbench
+== Create the Workbench[[create-wrkbnch]]
 
 . Click on the *Create a workbench* button. 
 +
@@ -137,7 +137,7 @@ image::openshift/create-workbench-form2.png[Create workbench form,90%,90%]
 +
 image::openshift/create-workbench-button.png[Create workbench button,100%,100%]
 
-== Open the Workbench
+== Open the Workbench[[open-wrkbnch]]
 
 . Once the workbench status is *Running* click on the *Open* link.
 

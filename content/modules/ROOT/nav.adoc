@@ -1,5 +1,9 @@
 
 * xref:setup.adoc[1. Project Setup]
+** xref:setup.adoc#rhoai-login[Login to RHOAI]
+** xref:setup.adoc#configure-dsp[Configure Data Science Pipelines]
+** xref:setup.adoc#create-wrkbnch[Create the Workbench]
+** xref:setup.adoc#open-wrkbnch[Open the Workbench]
 
 * xref:module-03.adoc[2. Elyra & Docling]
 ** xref:module-03.adoc#elyra[Elyra]
