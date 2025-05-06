@@ -1,6 +1,10 @@
 = Wrap up and Next Steps
 
-== Summary
+Want to try the code out on your own cluster? Follow the links below.
 
-== Get the Code
+- The code repository for the Docling markdown conversion and the qna.yaml generator +
+https://github.com/jhurlocker/instruct-generate[instruct-generate^]
+
+- The code repository for the Elyra pipeline, OpenShift Pipeline, and Triggers +
+https://github.com/jhurlocker/elyra_docling_rh_summit[elyra-docling-rh-summit^]
 

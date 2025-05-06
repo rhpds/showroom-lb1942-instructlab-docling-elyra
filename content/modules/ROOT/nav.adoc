@@ -6,13 +6,16 @@
 ** xref:module-03.adoc#docling[Docling]
 
 * xref:module-07.adoc[3. Run the Elyra Pipeline]
+** xref:module-07.adoc#llmconfig[LLM Environment Config]
+** xref:module-07.adoc#fileupload[Upload Files]
 ** xref:module-07.adoc#elyra[Run Pipeline]
 ** xref:module-07.adoc#viewrun[View the Pipeline Run]
 
 * xref:module-04.adoc[4. OpenShift Pipelines & Events]
-** xref:module-04.adoc#ocppipelines[OpenShift Pipelines]
+** xref:module-04.adoc#ocppipelines[Event Listeners]
 ** xref:module-04.adoc#minio[Minio]
 
 * xref:module-05.adoc[5. Trigger a Data Science Pipeline]
 ** xref:module-05.adoc#dsprun[Trigger Pipeline Run in OpenShift AI]
+
 * xref:module-06.adoc[6. Wrap-Up & Next Steps]
