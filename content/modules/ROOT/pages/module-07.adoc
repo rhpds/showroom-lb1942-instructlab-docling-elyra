@@ -86,7 +86,7 @@ image::openshift/run-pipeline.png[Run pipeline,100%,100%]
 . Leave the Pipeline name as *elyra-docling-pipeline*, make sure the Runtime Configuration is *Data Science Pipeline*, and add your Minio service as the *minio_url* parameter. You can copy the URL below.
 
 +
-[source,copy,role=execute,subs=attributes]]
+[source,copy,role=execute,subs=attributes]
 ----
 http://minio.summit-project-{user}.svc.cluster.local:9000
 ----
