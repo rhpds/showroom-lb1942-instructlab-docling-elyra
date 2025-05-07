@@ -20,9 +20,9 @@ These nodes can have dependencies, defining the order of execution.
 
 Elyra pipelines are designed to be flexible and can be executed on various platforms:
 
-* Local/JupyterLab: For development and testing.
-* Apache Airflow: For production-ready workflow orchestration.
-* Kubeflow Pipelines: For cloud-native machine learning pipelines.
+* Local/JupyterLab
+* Apache Airflow
+* Kubeflow Pipelines
 
 *Runtime Configurations*
 
@@ -47,7 +47,7 @@ Elyra supports both generic pipelines (which can run on multiple platforms) and 
 . We'll start by taking a look at our data science pipeline. 
 
 +
-Open the *elyra_docling_rh_summit/openshift_solution* directory and open the *docling_elyra_summit.pipeline*. Click on the *Ingest Files* node and then click on the *Open Panel* icon to view the node properties.
+Open the *elyra_docling_rh_summit/openshift_solution* directory and open the *elyra-docling-pipeline.pipeline*. Click on the *Ingest Files* node and then click on the *Open Panel* icon to view the node properties.
 
 + 
 image::openshift/rhoai-pipeline.png[Data Science Pipeline,100%,100%]
@@ -108,12 +108,13 @@ It's designed to run efficiently on standard hardware, making it accessible to a
 - Flexible output formats (JSON, Markdown, HTML).
 - Local execution capabilities for data privacy.
 - Command-line interface (CLI) and Python API.
+- Donated to the https://lfaidata.foundation/projects/docling/[Linux Foundation] in April 2025
 
 In essence, Docling aims to bridge the gap between unstructured document data and the structured data needs of modern AI applications.
 
 === Steps
 
-. In your workbench with the *docling_elyra_summit.pipeline* open,  double click on the *Docling* node. This should open the *../../ingest-summit.ipynb* Jupyter notebook. 
+. In your workbench with the *elyra-docling-pipeline.pipeline* open,  double click on the *Docling* node. This should open the *../../instruct-generate/ingest-summit.ipynb* Jupyter notebook. 
 
 +
 image::openshift/elyra-pdf-converter.png[Elyra PDF Converter Node,100%,100%]

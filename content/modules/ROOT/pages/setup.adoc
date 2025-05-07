@@ -111,6 +111,12 @@ Select *Standard Data Science* from the dropdown. Keep the default *Version sele
 +
 [style="border: 1px solid black;"]
 image::openshift/create-workbench-form1.png[Create workbench form,90%,90]
+- *Deployment Size*
++
+Leave the default deployment size values. *Container size* small and *Accelerator* None.
++
+[style="border: 1px solid black;"]
+image::openshift/wrkbnch-deployment-sizes.png[Workbench deployment sizes,90%,90]
 +
 - *Environment Variables* - Click on *Add variable*
 +

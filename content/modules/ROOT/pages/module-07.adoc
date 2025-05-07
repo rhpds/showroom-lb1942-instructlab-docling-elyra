@@ -12,7 +12,7 @@ We'll need to put values in the env.config file for the *model-endpoint* and *mo
 + 
 image::openshift/env-config.png[Environment config file,100%,100%]
 
-. Go to the https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}[OpenShift AI dashboard^] and click on *Data Science Projects* and click on *granite-model-project*. 
+. Go to the https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}[OpenShift AI dashboard^] and click on *Data Science Projects* and click on *granite-model-project*. Finally, click the *Model* tab. 
 
 + 
 image::openshift/granite-model-project.png[Granite model project,100%,100%]
