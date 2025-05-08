@@ -152,7 +152,7 @@ image::openshift/markdown-fixed.png[HITL markdown review,100%,100%]
 +
 For this lab we'll assume that you made the appropriate changes and renamed the approved version as *docling-markdown-approved.md*.
 
-. Now that we have a reviewed and approved markdown file we can upload to an s3 bucket so our pipeline can move on to generate the qna.yaml file (Q&A Generator node).
+. Now that we have a reviewed and approved markdown file we can upload to an s3 bucket so our pipeline can move on to generate the qna.yaml file (QNA Generator node).
 + 
 Open *elyra_docling_rh_summit/openshift_solution/minio_utilities/HITL-upload-markdown.py* and click the *Run* button.
 + 
@@ -167,12 +167,12 @@ image::openshift/qna-generator-node-start.png[QNA generator node starting,100%,1
 . Once your QNA Generator node is complete go to your *summit-workbench* and open the *elyra_docling_rh_summit/openshift_solution/minio_utilities/HITL-review-qna.py* file. 
 +
 image::openshift/qna-generator-node-complete.png[QNA generator node finished,100%,100%]
-+
-image::openshift/hitl-qna-review.png[Download generated qna file,100%,100%]
 
 . Click the *Run* button on the *HITL-review-qna.py* file. This should download the generated qna.yaml file with the file name *qna-review-me.yaml*.
 +
-Open the *qna-review-me.yaml* file. Much like the markdown file our generated qna file needs to be reviewed to ensure that the quality of the context and question and answer pairs meet the needs of the use case. 
+image::openshift/hitl-qna-review.png[Download generated qna file,100%,100%]
++
+Open the *qna-review-me.yaml* file. Similar to the markdown file, our generated qna file needs to be reviewed to ensure that the quality of the context and question and answer pairs meet the needs of the use case. 
 +
 image::openshift/qna-file-review.png[Review generated qna file,100%,100%]
 + 
