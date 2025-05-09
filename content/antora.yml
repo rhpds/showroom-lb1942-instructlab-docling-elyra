@@ -16,7 +16,7 @@ asciidoc:
     ssh_command: ssh someone@example.com
     user: user1
     password: REPLACE_ME
-    openshift_cluster_ingress_domain: apps.cluster-bmh7t.bmh7t.sandbox3715.opentlc.com
+    openshift_cluster_ingress_domain: apps.cluster-zl4pw.zl4pw.sandbox3928.opentlc.com
     page-links:
     - url: https://redhat.com
       text: Red Hat

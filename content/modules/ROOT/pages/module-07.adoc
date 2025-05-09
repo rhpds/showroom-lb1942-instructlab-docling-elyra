@@ -1,5 +1,5 @@
 == Elyra Pipeline
-We'll run the pipeline from the *summit-workbench* Jupyter notebook we previously opened. Since Elyra is a visual representation of a pipeline it doesn't actually have a runtime built in. When we run the pipeline we are actually submitting the job to OpenShift AI Data Science Pipelines which converts the pipeline run into a Kubelow pipeline run.
+We'll run the pipeline from the *summit-workbench* Jupyter notebook we previously opened. Since Elyra is a visual representation of a pipeline it doesn't actually have a runtime built in. When we run the pipeline we are actually submitting the job to OpenShift AI Data Science Pipelines which converts the pipeline run into a Kubeflow pipeline run.
 
 image::openshift/elyra-pipeline-arch.png[Elyra pipeline,100%,100%]
 
@@ -29,7 +29,9 @@ NOTE: Make sure you append '*/vl*' to the *model-endpoint* value!
 + 
 image::openshift/env-config-model-endpoint.png[Environment variable model endpoint,100%,100%]
 
-. Let's copy the model token now. Go back to the *granite-model-project* and scroll down to the Token authentication section. Click the *Copy* button next to the token secret. 
+. Let's copy the model token now. Go back to the *granite-model-project*, Click on the *>* image:openshift/left-arrow-model.png[Expand model details,14%,14%] on the left of the model name, and scroll down to the Token authentication section.
++
+Click the *Copy* button next to the token secret. 
 
 + 
 image::openshift/granite-model-token.png[Granite model token,100%,100%]
@@ -101,7 +103,7 @@ image::openshift/pipeline-run-success-popup.png[Pipeline run success,100%,100%]
 
 == View the Pipeline Run[[viewrun]]
 
-. Under the *Experiments and runs* section in https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}[OpenShift AI^] you should see that your pipeline has started running. 
+. Under the *Experiments and runs* section in https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/experiments/summit-project-{user}[OpenShift AI^] you should see that your pipeline has started running. 
 
 + 
 image::openshift/pipeline-run-start-rhoai.png[Pipeline run start in RHOAI,100%,100%]

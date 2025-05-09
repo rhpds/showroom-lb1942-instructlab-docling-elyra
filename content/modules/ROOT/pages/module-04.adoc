@@ -95,14 +95,11 @@ image::openshift/minio-add-event-destination.png[Minio add event destination,100
 +
 image::openshift/minio-webhook-event.png[Minio webhook event,100%,100%]
 
-. We'll need to get our OpenShift token before we can configure the event destination in Minio. You can get the https://oauth-openshift.apps.cluster-bmh7t.bmh7t.sandbox3715.opentlc.com/oauth/token/request[token^] from the OpenShift web console. 
-
-////
-Click on your username in the top right corner of the OpenShift web console and click *Copy login command*.
-
+. We'll need to get our OpenShift token before we can configure the event destination in Minio. You can get the token from the OpenShift web console. 
++
+Click on your username in the top right corner of the https://console-openshift-console.{openshift_cluster_ingress_domain}/dashboards[OpenShift web console^] and click *Copy login command*.
 +
 image::openshift/copy-login-ocp.png[OpenShift token,100%,100%]
-////
 
 . Click *Display Token* and copy the token to add to the event destination.
 +
@@ -110,7 +107,7 @@ image::openshift/ocp-token.png[OpenShift token,100%,100%]
 
 . Enter in the *Identifier*, the event listener route URL for the *Endpoint*, and your OpenShift token in the *Auth Token* field.
 +
-*Event listener route*
+*Identifier*
 +
 [source,copy,role=execute,subs=attributes]
 ----

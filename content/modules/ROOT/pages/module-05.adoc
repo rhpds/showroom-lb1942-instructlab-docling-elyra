@@ -2,16 +2,16 @@
 
 image::openshift/trigger-pipeline-arch.png[Trigger pipeline,100%,100%]
 
-To run the data science pipeline on OpenShift AI all we need to do is upload a file to our *upload-bucket* in Minio. The Minio event destination will notify our event listener that a new file has been uploaded to the bucket and the event listener along with the trigger template will start our OpenShift AI Data Science Pipeline.
+To run the data science pipeline on OpenShift AI all we need to do is upload a file to our https://minio-ui-summit-project-{user}.{openshift_cluster_ingress_domain}/browser/upload-files[upload-files^] bucket in Minio. The Minio event destination will notify our event listener that a new file has been uploaded to the bucket and the event listener along with the trigger template will start our OpenShift AI Data Science Pipeline.
 
 NOTE: To interact with Minio we'll need to use a python script (we can't download/upload files on the lab laptops).  
 
 . Go back to your OpenShift AI workbench and open the *elyra_docling_rh_summit/openshift_solution/minio_utilities* directory. 
 +
-Open the *upload-env.py* file and click the *Run* icon at the top. This python script will upload the env.config file to our Minio s3 bucket (upload-bucket). 
+Open the *upload-env.py* file and click the *Run* icon at the top. This python script will upload the env.config file to our Minio s3 bucket (upload-files). 
 
 +
-NOTE: We're just uploading the env.config file again to our s3 bucket to trigger our event listener. Any file we add to the upload-bucket in Minio will send a notification to our event listener in OpenShift.
+NOTE: We're just uploading the env.config file again to our s3 bucket to trigger our event listener. Any file we add to the upload-files bucket in Minio will send a notification to our event listener in OpenShift.
 
 +
 image::openshift/upload-env.png[Upload env.config,100%,100%]
